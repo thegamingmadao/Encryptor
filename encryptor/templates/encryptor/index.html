@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<form class="form-horizontal" role ="encrypt" method="GET" action="{% url 'encryptor:index' %}">
+			<div class="form-group">
+          		<label for="pass" class="col-sm-2 control-label">Pass:
+          		</label>
+          		<div class="col-sm-10">
+            		<input type="text" class="form-control" name="pass" 
+                  value="{{ request.GET.pass }}" >
+         	 	</div>  
+        	</div>
+        	<div class="form-group">  
+          		<label for="message" class="col-sm-2 control-label">Plaintext:</label>
+        		<div class="col-sm-10">  
+          		<textarea type="text" class="form-control" rows="8" 
+          		name="message">{{ request.GET.message }}</textarea>
+          		</div>
+        	</div>
+        	<div class="form-group">
+          		<div class="col-sm-offset-2 col-sm-10">
+            		<button type="submit" class="btn btn-default">Encrypt</button>
+          		</div>       
+        	</div>  
+		</form>
+	</div>
+	{% if encrypted %}
+    <div class="row">
+      <label for="encrypted" class="col-sm-2 control-label">Encrypted:</label>
+          <div class="col-sm-10">  
+            <textarea type="text" class="form-control" rows="8" 
+            name="encrypted">{{ encrypted }}</textarea>
+          </div>
+    </div>
+  {% endif %}
+</div>
